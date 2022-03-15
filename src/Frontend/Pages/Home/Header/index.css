@@ -1,0 +1,96 @@
+.header {
+  background-color: var(--primary);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  width: 80%;
+}
+a {
+  text-decoration: none;
+  color: var(--black);
+  border: none;
+  outline: none;
+}
+.header-main-logo {
+  width: 70%;
+}
+.header-plus-img {
+  width: 4%;
+}
+
+.plus-container > :nth-child(1) {
+  color: var(--white);
+  font-style: italic;
+  font-size: small;
+}
+.plus-container > :nth-child(2) {
+  color: var(--secondary);
+  font-style: italic;
+  font-size: small;
+}
+.header-logo-container {
+  height: 100%;
+}
+.header-search-bar-container {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.3rem;
+  margin: 0 auto 0 12px;
+}
+.search-icon {
+  margin: 0.5rem;
+}
+.header-search-bar {
+  outline: none;
+  padding: 0.1rem;
+  border: none;
+  width: 100%;
+}
+input[type="text"] {
+  margin-left: 0.4rem;
+}
+
+.login-btn {
+  background-color: var(--white);
+
+  font-weight: bolder;
+  outline: none;
+  border: none;
+  padding: 0.3rem;
+  height: 100%;
+  cursor: pointer;
+  line-height: 1.5rem;
+  border-radius: 0.1rem;
+  display: flex;
+}
+.login-btn > div {
+  display: inline-block;
+}
+.login-btn > div > a {
+  padding: 5px 40px;
+  color: var(--primary);
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.cart > :nth-child(1) {
+  color: var(--white);
+}
+.cart > :nth-child(2) {
+  color: var(--white);
+  font-weight: 550;
+  font-size: large;
+}
