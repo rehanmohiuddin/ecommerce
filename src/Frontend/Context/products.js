@@ -12,10 +12,9 @@ export const ProductProvider = ({ children }) => {
   ) => {
     switch (action.type) {
       case GET_ALL_PRODUCTS:
-        console.log("Pro", { action });
         return {
           ...state,
-          products: action.data,
+          products: action.data.products,
         };
       default:
         return {
