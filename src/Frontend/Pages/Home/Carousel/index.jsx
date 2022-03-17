@@ -7,26 +7,31 @@ import {
   GET_ALL_PRODUCTS,
   useProducts,
 } from "../../../Context/products";
+import {
+  getCarousel,
+  GET_ALL_CAROUSEL_OFFERS,
+  useCategory,
+} from "../../../Context/category";
 
 function CarouselProducts() {
-  const { products, loading, dispatch } = useProducts();
+  const { carousel, loading, dispatch } = useCategory();
   useEffect(async () => {
-    dispatch({ type: GET_ALL_PRODUCTS, data: await getAllProducts() });
+    dispatch({ type: GET_ALL_CAROUSEL_OFFERS, data: await getCarousel() });
   }, []);
-  console.log({ products });
+
   return (
     <div className="carousel-container">
       <Carousel
         showIndicators={false}
         showThumbs={false}
-        autoPlay={true}
+        autoPlay={false}
         showStatus={false}
         infiniteLoop={true}
       >
-        {products.map((_product) => (
+        {carousel?.map((_product) => (
           <div className="carousel-item-container">
             <img src={_product.image} />
-            <div className="legend">{_product.title}</div>
+            <h2 className="kash-h4">{_product.title}</h2>
           </div>
         ))}
       </Carousel>

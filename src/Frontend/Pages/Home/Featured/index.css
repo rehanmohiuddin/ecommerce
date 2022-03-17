@@ -1,5 +1,44 @@
 .featured-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  justify-content: center;
+  box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem var(--gray);
+  margin: 0.5rem;
+}
+.featured-header > .kash-h5 {
+  font-weight: 800 !important;
+  text-align: left;
+  margin: 0 0 0 0.3rem;
+}
+.featured-container > :nth-child(2) {
+  text-align: left;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  color: var(--app-light-gray);
+  font-weight: 400;
+  font-size: 14px;
+}
+.featured-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.featured-products-container {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.product-border {
+  border-style: solid;
+  border-color: var(--gray);
+  border-width: 0.01rem;
+  opacity: 0.7;
+}
+.product-featured {
+  cursor: pointer;
+  height: 100%;
+}
+/* .product-featured-title {
+  word-break: break-all;
+} */
+.product-image {
+  width: 12vw;
+  padding: 1rem;
 }

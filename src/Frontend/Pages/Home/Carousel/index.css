@@ -1,14 +1,18 @@
 .carousel-container {
   padding: 1rem;
-  box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem var(--gray);
+  /* box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem var(--gray); */
+  border-style: solid;
+  border-color: var(--gray);
+  border-width: 0.01rem;
 }
-.carousel-item-container {
-  width: 100%;
-}
+/* .carousel-item-container {
+  width: 80%;
+} */
 .carousel-item-container > img {
+  width: 50% !important;
 }
 .carousel-item-container {
-  width: 20%;
+  height: 100%;
 }
 .control-next,
 .control-prev {
@@ -34,6 +38,22 @@
 
 .carousel-item-container > :nth-child(2) {
   padding: 0.2rem;
-  background-color: var(--orange) !important;
-  bottom: 0 !important;
+  /* background-color: var(--orange) !important; */
+  bottom: -0.5rem !important;
+  opacity: 1 !important;
+  border-radius: 0.2rem !important;
+}
+.carousel-item-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* width: 100%; */
+}
+
+.carousel-item-container > h2 {
+  font-weight: bolder;
+}
+
+.carousel-item-container > .legend {
+  transition: all 100s ease-in-out !important;
 }

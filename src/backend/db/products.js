@@ -5,6 +5,39 @@ import { v4 as uuid } from "uuid";
  * You can add products of your wish with different attributes
  * */
 
+export const carouselOffers = [
+  {
+    id: uuid(),
+    title: "Iphone 13 Offer",
+    image:
+      "https://res.cloudinary.com/dupx0mrty/image/upload/v1647361463/ecommerce/hero_iphonese_preorder__e4eta8trjs66_mediumtall-removebg-preview_ysrrax.png",
+  },
+  {
+    id: uuid(),
+    title: "Iphone's Discounted Offer",
+    image:
+      "https://res.cloudinary.com/dupx0mrty/image/upload/v1647361148/ecommerce/hero_ipadair__flhdv47anjqu_medium-removebg-preview_iv4ldg.png",
+  },
+  {
+    id: uuid(),
+    title: "Iphone's Discounted Offer",
+    image:
+      "https://res.cloudinary.com/dupx0mrty/image/upload/v1647361210/ecommerce/promo_watch_lte__djeaso7ukrsm_medium-removebg-preview_lva1ao.png",
+  },
+  {
+    id: uuid(),
+    title: "Introducing Galaxy S22 Series",
+    image:
+      "https://res.cloudinary.com/dupx0mrty/image/upload/v1647361352/ecommerce/1440x6401-removebg-preview_qkdvxm.png",
+  },
+  {
+    id: uuid(),
+    title: "Galaxy Book2 Series The new way to PC",
+    image:
+      "https://res.cloudinary.com/dupx0mrty/image/upload/v1647362443/ecommerce/Galaxy_Book2_Series_banner_1440x6401-removebg-preview_rhqvgk.png",
+  },
+];
+
 export const products = [
   {
     id: 1,

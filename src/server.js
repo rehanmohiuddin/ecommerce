@@ -15,6 +15,7 @@ import {
 } from "./backend/controllers/CategoryController";
 import {
   getAllProductsHandler,
+  getCarouselHandler,
   getProductHandler,
 } from "./backend/controllers/ProductController";
 import {
@@ -23,8 +24,9 @@ import {
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
 import { categories } from "./backend/db/categories";
-import { products } from "./backend/db/products";
+import { carouselOffers, products } from "./backend/db/products";
 import { users } from "./backend/db/users";
+import { getCarousel } from "./Frontend/Context/category";
 
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
@@ -38,6 +40,7 @@ export function makeServer({ environment = "development" } = {}) {
       user: Model,
       cart: Model,
       wishlist: Model,
+      offer: Model,
     },
 
     // Runs on the start of the server
@@ -46,6 +49,9 @@ export function makeServer({ environment = "development" } = {}) {
       server.logging = false;
       products.forEach((item) => {
         server.create("product", { ...item });
+      });
+      carouselOffers.forEach((item) => {
+        server.create("offer", { ...item });
       });
 
       users.forEach((item) =>
@@ -60,6 +66,8 @@ export function makeServer({ environment = "development" } = {}) {
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
+
+      this.get("/offers/carousel", getCarouselHandler.bind(this));
 
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
