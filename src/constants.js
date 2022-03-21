@@ -38,4 +38,7 @@ const footer = {
 const allCards =
   "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/payment-method_69e7ec.svg";
 
-export { headerImg, plusImg, footer, allCards };
+const authImg =
+  "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png";
+
+export { headerImg, plusImg, footer, allCards, authImg };
