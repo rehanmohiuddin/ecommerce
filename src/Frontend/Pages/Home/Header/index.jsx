@@ -7,11 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 import { headerImg, plusImg } from "../../../../constants";
-import {
-  OPEN_AUTH_COMP,
-  OPEN_LOGIN_COMP,
-  useAuth,
-} from "../../../Context/Auth";
+import { OPEN_AUTH_COMP } from "../../../actions/Auth";
+import { useAuth } from "../../../Context/Auth";
 import Button from "../../../Utility/components/Button";
 import "./index.css";
 

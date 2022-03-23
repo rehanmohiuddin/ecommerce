@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authImg } from "../../../constants";
-import { CLOSE_AUTH_COMP, OPEN_AUTH_COMP, useAuth } from "../../Context/Auth";
+import { CLOSE_AUTH_COMP, OPEN_AUTH_COMP } from "../../actions/Auth";
+import { useAuth } from "../../Context/Auth";
 import { SHOW_MESSAGE, useSnackBar } from "../../Context/SnackMessage";
 import useOutsideClick from "../../hooks/useOutsideClick";
-import Button from "../../Utility/components/Button";
 import Snackbar from "../../Utility/components/Snackbar";
 import "./index.css";
 import Login from "./Login";
@@ -29,7 +29,8 @@ function Auth() {
           action: AuthMessageList[AuthMessage].action,
         },
       });
-      dispatch(AuthMessageList[AuthMessage].action);
+      AuthMessageList[AuthMessage].action &&
+        dispatch(AuthMessageList[AuthMessage].action);
     }
   }, [AuthMessage]);
   return (

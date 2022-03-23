@@ -5,7 +5,8 @@ import {
   OPEN_AUTH_COMP,
   REGISTER,
   REGISTER_SUCCESS,
-} from "../../Context/Auth";
+  LOGIN_FAILURE,
+} from "../../actions/Auth";
 
 const AuthMessageList = {
   LOGIN_SUCCESS: {
@@ -27,6 +28,10 @@ const AuthMessageList = {
         register: false,
       },
     },
+  },
+  LOGIN_FAILURE: {
+    message: "Incorrect Credentials",
+    action: null,
   },
 };
 

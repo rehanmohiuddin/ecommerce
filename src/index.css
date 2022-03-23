@@ -7,6 +7,11 @@
   --gray: rgb(0 0 0 / 16%);
   --app-light-gray: #b2b2b2;
   --app-dark-gray: #172337;
+  --app-dark-white: #8a8a8a;
+  --app-light-white: #e0e0e0;
+  --app-pale-gray: #9c9999;
+  --app-deep-gray: #6d6d6d;
+  --app-pale-white: #eee;
 }
 
 .color-blue {

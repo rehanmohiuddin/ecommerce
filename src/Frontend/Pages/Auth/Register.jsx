@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { authImg } from "../../../constants";
-import {
-  OPEN_AUTH_COMP,
-  OPEN_LOGIN_COMP,
-  REGISTER,
-  register,
-  useAuth,
-} from "../../Context/Auth";
-import useOutsideClick from "../../hooks/useOutsideClick";
+import { OPEN_AUTH_COMP, REGISTER } from "../../actions/Auth";
+import { register, useAuth } from "../../Context/Auth";
 import Button from "../../Utility/components/Button";
 import "./index.css";
 
