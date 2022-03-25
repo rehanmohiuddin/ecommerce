@@ -19,7 +19,7 @@ function Category() {
     <div className="category-container">
       {Array.isArray(categories) &&
         categories.map((_category) => (
-          <Link to={"/products/" + _category.categoryName}>
+          <Link to={"/products"}>
             <div className="category">
               <img className="kash-avatar-large" src={_category.thumbnail} />
               <div>{_category.categoryName}</div>
