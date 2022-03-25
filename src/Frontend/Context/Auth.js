@@ -36,7 +36,6 @@ const login = async (data) => {
 const register = async (data) => {
   try {
     const resp = await AxiosInstance.post("/api/auth/signup", data);
-    console.log({ resp });
     return resp.status === 201
       ? { type: REGISTER_SUCCESS, data: resp.data.createdUser }
       : { type: REGISTER_FAILURE, error: "Some thing Went Wrong" };

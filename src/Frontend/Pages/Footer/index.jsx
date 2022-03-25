@@ -11,10 +11,9 @@ import { allCards, footer, headerImg } from "../../../constants";
 import "./index.css";
 
 function Index() {
-  console.log("keys", Object.keys(footer));
   return (
     <footer>
-      <div className="footer-container kash-container">
+      <div className="footer-container ">
         {/* <img className="footer-img" src={headerImg} /> */}
         {Object.keys(footer).map((_key) => (
           <div className="footer-list">

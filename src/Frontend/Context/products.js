@@ -1,31 +1,12 @@
 import { createContext, useContext, useReducer } from "react";
 import { AxiosInstance } from "../../AxiosInstance";
-
-export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+import { productState } from "../actions/Products";
+import { productsReducer } from "../reducers/Products";
 
 const ProductContext = createContext({ products: [], loading: false });
 
 export const ProductProvider = ({ children }) => {
-  const reducerFunction = (
-    state = { products: [], loading: false },
-    action
-  ) => {
-    switch (action.type) {
-      case GET_ALL_PRODUCTS:
-        return {
-          ...state,
-          products: action.data.products,
-        };
-      default:
-        return {
-          ...state,
-        };
-    }
-  };
-  const [state, dispatch] = useReducer(reducerFunction, {
-    products: [],
-    loading: false,
-  });
+  const [state, dispatch] = useReducer(productsReducer, productState);
   return (
     <ProductContext.Provider value={{ ...state, dispatch }}>
       {children}
@@ -38,4 +19,9 @@ export const useProducts = () => useContext(ProductContext);
 export const getAllProducts = async () => {
   const _products = (await AxiosInstance.get("/api/products")).data;
   return _products;
+};
+
+export const getFeaturedProducts = async () => {
+  const resp = (await AxiosInstance.get("/api/featured/products")).data;
+  return resp;
 };

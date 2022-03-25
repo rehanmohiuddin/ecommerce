@@ -5,6 +5,7 @@ import {
   useCategory,
   GET_ALL_CATEGORIES,
 } from "../../../Context/category";
+import { Link } from "react-router-dom";
 function Category() {
   const { categories, loader, dispatch } = useCategory();
 
@@ -18,10 +19,12 @@ function Category() {
     <div className="category-container">
       {Array.isArray(categories) &&
         categories.map((_category) => (
-          <div className="category">
-            <img className="kash-avatar-large" src={_category.thumbnail} />
-            <div>{_category.categoryName.toUpperCase()}</div>
-          </div>
+          <Link to={"/products/" + _category.categoryName}>
+            <div className="category">
+              <img className="kash-avatar-large" src={_category.thumbnail} />
+              <div>{_category.categoryName}</div>
+            </div>
+          </Link>
         ))}
     </div>
   );

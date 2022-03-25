@@ -1,6 +1,7 @@
 .featured-container {
   box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem var(--gray);
   margin: 0.5rem;
+  padding: 1rem;
 }
 .featured-header > .kash-h5 {
   font-weight: 800;
@@ -35,10 +36,18 @@
   cursor: pointer;
   height: 100%;
 }
+.product-featured-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-featured-title {
+  text-align: center;
+}
 /* .product-featured-title {
   word-break: break-all;
 } */
 .product-image {
-  width: 12vw;
+  /* width: 12vw; */
   padding: 1rem;
 }

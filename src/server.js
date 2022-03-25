@@ -16,7 +16,9 @@ import {
 import {
   getAllProductsHandler,
   getCarouselHandler,
+  getFeaturedProductsHandler,
   getProductHandler,
+  getProductsByCategoryHandler,
 } from "./backend/controllers/ProductController";
 import {
   addItemToWishlistHandler,
@@ -41,6 +43,7 @@ export function makeServer({ environment = "development" } = {}) {
       cart: Model,
       wishlist: Model,
       offer: Model,
+      featuredProducts: Model,
     },
 
     // Runs on the start of the server
@@ -68,11 +71,11 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/auth/login", loginHandler.bind(this));
 
       this.get("/offers/carousel", getCarouselHandler.bind(this));
-
+      this.get("/featured/products", getFeaturedProductsHandler.bind(this));
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
       this.get("/products/:productId", getProductHandler.bind(this));
-
+      this.get("/products/:category", getProductsByCategoryHandler.bind(this));
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
       this.get("/categories/:categoryId", getCategoryHandler.bind(this));

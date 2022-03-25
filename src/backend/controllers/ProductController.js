@@ -15,6 +15,21 @@ export const getAllProductsHandler = function () {
   return new Response(200, {}, { products: this.db.products });
 };
 
+export const getFeaturedProductsHandler = (schema, request) => {
+  try {
+    const products = schema.db.products.where((_pro) => _pro.id >= 12);
+    return new Response(200, {}, { featuredProducts: products });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
 export const getCarouselHandler = function () {
   return new Response(200, {}, { offers: this.db.offers });
 };
@@ -22,7 +37,22 @@ export const getCarouselHandler = function () {
  * This handler handles gets all products in the db.
  * send GET Request at /api/user/products/:productId
  * */
-
+export const getProductsByCategoryHandler = (schema, request) => {
+  try {
+    const category = request.params.category;
+    const products = schema.db.products.where({ category: category });
+    // console.log({ category, products });
+    return new Response(200, {}, { products: products });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
 export const getProductHandler = function (schema, request) {
   const productId = request.params.productId;
   try {
