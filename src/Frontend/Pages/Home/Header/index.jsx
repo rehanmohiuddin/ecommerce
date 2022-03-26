@@ -1,15 +1,19 @@
-import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faShoppingCart,
+  faUserCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
+import { headerImg, plusImg } from "../../../../constants";
+import { OPEN_AUTH_COMP } from "../../../actions/Auth";
+import { useAuth } from "../../../Context/Auth";
+import Button from "../../../Utility/components/Button";
 import "./index.css";
 
-const headerImg =
-  "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png";
-
-const plusImg =
-  "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png";
 const Header = () => {
+  const { isLoggedIn, user, dispatch } = useAuth();
   return (
     <header className="header">
       <div>
@@ -31,11 +35,24 @@ const Header = () => {
           />
           <FontAwesomeIcon className="search-icon color-blue" icon={faSearch} />
         </div>
-        <div className="login-btn">
-          <div>
-            <Link to={"/login"}>LOGIN</Link>
-          </div>
-        </div>
+        {isLoggedIn ? (
+          <FontAwesomeIcon size="2x" icon={faUserCircle} />
+        ) : (
+          <Button
+            clickFun={() =>
+              dispatch({
+                type: OPEN_AUTH_COMP,
+                data: {
+                  login: true,
+                  register: false,
+                },
+              })
+            }
+            navigate="/"
+            type="primary"
+            data="Login"
+          />
+        )}
         <div className="cart">
           <FontAwesomeIcon icon={faShoppingCart} />
           <Link to={"/cart"}>Cart</Link>

@@ -1,0 +1,205 @@
+#kash-modal {
+  display: flex;
+}
+.kash-modal {
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  height: 65vh;
+  flex-flow: row wrap;
+  width: 40%;
+}
+.auth-left,
+.auth-right {
+  padding: 2rem 0.8rem 0.8rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+.auth-right {
+  padding-top: 2rem;
+}
+.auth-right {
+  width: 60%;
+  flex: 1;
+}
+
+.auth-left {
+  background-color: var(--primary);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background-image: url("https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png");
+  background-position: center 85%;
+  background-repeat: no-repeat;
+  width: 40%;
+}
+.auth-left > h3,
+.auth-left-desc {
+  text-align: left;
+}
+.auth-left > .auth-left-desc {
+  padding: 0.5rem 0.5rem;
+  color: var(--app-pale-white);
+}
+.auth-left > img {
+  width: 80%;
+  position: absolute;
+  bottom: 1rem;
+}
+.auth-email {
+  position: relative;
+  width: 100%;
+  margin-bottom: 4vh;
+  display: flex;
+}
+.auth-email > input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--app-light-white);
+  width: 100%;
+}
+
+.auth-email > label {
+  position: absolute;
+  left: 0;
+  top: -0.4rem;
+  pointer-events: none;
+  transition: top 200ms;
+  font-size: 1rem;
+  color: var(--app-dark-gray);
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.auth-email > input:focus + label {
+  top: -1rem;
+  font-size: 12px;
+}
+.auth-email > input:focus {
+  border-bottom: 1px solid var(--primary);
+}
+.auth-email > a {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0;
+  font-size: 0.9rem;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.terms {
+  text-align: left;
+  font-size: 0.7rem;
+  color: var(--app-light-gray);
+}
+.terms > a {
+  color: var(--primary);
+}
+.login-btn-container {
+  margin: 1rem 0.5rem 0.5rem 0.5rem;
+  width: 100%;
+}
+
+.login-actions {
+  margin-top: 4vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-link {
+  position: absolute;
+  bottom: 1rem;
+}
+.register-link {
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+.or {
+  padding: 0.3rem;
+  color: var(--app-light-gray);
+  font-weight: 700;
+}
+
+.has-float-label {
+  display: block;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.has-float-label input:focus {
+  border-bottom: 2px solid var(--primary);
+  transition: all 0.2s;
+}
+
+.has-float-label input:disabled {
+  border-bottom: 2px dotted var(--app-dark-white);
+  pointer-events: none;
+  background-color: inherit;
+}
+
+.has-float-label input {
+  font-size: inherit;
+  padding: 16px 0 8px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: initial;
+  caret-color: var(--primary);
+  border-bottom: 2px solid var(--app-light-white);
+  width: 100%;
+}
+
+input {
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1.15;
+  margin: 0;
+  outline: none;
+}
+
+.has-float-label input:placeholder-shown:not(:focus) + .label {
+  font-size: 14px;
+  top: 20px;
+  bottom: -8px;
+  color: var(--app-pale-gray);
+}
+
+.has-float-label label,
+.has-float-label > .label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: text;
+  font-size: 12px;
+  color: var(--app-deep-gray);
+  transition: all 0.2s;
+  pointer-events: none;
+}
+
+.has-float-label input:focus ~ .label {
+  color: var(--primary);
+}
+
+.helper {
+  display: block;
+  color: var(--app-deep-gray);
+}
+
+.helper,
+.error {
+  font-size: 12px;
+  padding-top: 8px;
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited .helper {
+  color: var(--app-pale-white);
+}

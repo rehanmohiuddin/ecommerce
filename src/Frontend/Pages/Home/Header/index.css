@@ -56,9 +56,6 @@ a {
   border: none;
   width: 100%;
 }
-input[type="text"] {
-  margin-left: 0.4rem;
-}
 
 .login-btn {
   background-color: var(--white);
@@ -93,4 +90,9 @@ input[type="text"] {
   color: var(--white);
   font-weight: 550;
   font-size: large;
+}
+
+.fa-circle-user {
+  color: var(--white);
+  cursor: pointer;
 }
