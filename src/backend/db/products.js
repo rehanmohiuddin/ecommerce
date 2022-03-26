@@ -7,31 +7,31 @@ import { v4 as uuid } from "uuid";
 
 export const carouselOffers = [
   {
-    id: uuid(),
+    _id: uuid(),
     title: "Iphone 13 Offer",
     image:
       "https://res.cloudinary.com/dupx0mrty/image/upload/v1647361463/ecommerce/hero_iphonese_preorder__e4eta8trjs66_mediumtall-removebg-preview_ysrrax.png",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     title: "Iphone's Discounted Offer",
     image:
       "https://res.cloudinary.com/dupx0mrty/image/upload/v1647361148/ecommerce/hero_ipadair__flhdv47anjqu_medium-removebg-preview_iv4ldg.png",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     title: "Iphone's Discounted Offer",
     image:
       "https://res.cloudinary.com/dupx0mrty/image/upload/v1647361210/ecommerce/promo_watch_lte__djeaso7ukrsm_medium-removebg-preview_lva1ao.png",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     title: "Introducing Galaxy S22 Series",
     image:
       "https://res.cloudinary.com/dupx0mrty/image/upload/v1647361352/ecommerce/1440x6401-removebg-preview_qkdvxm.png",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     title: "Galaxy Book2 Series The new way to PC",
     image:
       "https://res.cloudinary.com/dupx0mrty/image/upload/v1647362443/ecommerce/Galaxy_Book2_Series_banner_1440x6401-removebg-preview_rhqvgk.png",
@@ -40,7 +40,7 @@ export const carouselOffers = [
 
 export const products = [
   {
-    id: uuid(),
+    _id: uuid(),
     title: "realme C11 2021 (Cool Grey, 64 GB)  (4 GB RAM)",
     description:
       "4 GB RAM | 64 GB ROM | Expandable Upto 256 GB \n 16.51 cm (6.5 inch) HD+ Display \n 8MP Rear Camera | 5MP Front Camera \n 5000 mAh Battery \n Octa-core Processor",
@@ -61,7 +61,7 @@ export const products = [
     ],
   },
   {
-    id: uuid(),
+    _id: uuid(),
     title: "Redmi 9A Sport (Coral Green, 32 GB)  (2 GB RAM)",
     description:
       "2 GB RAM | 32 GB ROM | Expandable Upto 512 GB \n 16.59 cm (6.53 inch) HD+ Display\n13MP Rear Camera | 5MP Front Camera \n5000mAh Battery \nMediaTek Helio G25 Processor",
@@ -81,7 +81,7 @@ export const products = [
     ],
   },
   {
-    id: uuid(),
+    _id: uuid(),
     title: "Xiaomi 11i 5G (Camo Green, 128 GB)  (6 GB RAM)",
     description:
       "6 GB RAM | 128 GB ROM | Expandable Upto 1 TB \n16.94 cm (6.67 inch) Full HD+ AMOLED Display \n 108MP Rear Camera | 16MP Front Camera \n 5160 mAh Li-Polymer Battery \n Mediatek Dimensity 920 Processor",
@@ -96,7 +96,7 @@ export const products = [
     images: ["https://dummyjson.com/image/i/products/3/1.jpg"],
   },
   {
-    id: 4,
+    _id: 4,
     title: "OPPOF19",
     description:
       "64 GB ROM \n 13.72 cm (5.4 inch) Super Retina XDR Display\n12MP + 12MP | 12MP Front Camera\nA14 Bionic Chip with Next Generation Neural Engine Processor\nCeramic Shield\nIndustry-leading IP68 Water Resistance\nAll Screen OLED Display\n12MP TrueDepth Front Camera with Night Mode, 4K Dolby Vision HDR Recording",
@@ -117,7 +117,7 @@ export const products = [
     ],
   },
   {
-    id: uuid(),
+    _id: uuid(),
     title: "APPLE iPhone SE (Red, 128 GB)",
     description:
       "128 GB ROM\n11.94 cm (4.7 inch) Retina HD Display\n12MP Rear Camera | 7MP Front Camera\nA13 Bionic Chip with 3rd Gen Neural Engine Processor\nWater and Dust Resistant (1 meter for Upto 30 minutes, IP67)\nFast Charge Capable\nWireless charging (Works with Qi Chargers | Qi Chargers are Sold Separately",
@@ -136,7 +136,7 @@ export const products = [
     ],
   },
   {
-    id: 6,
+    _id: 6,
     title: "MacBook Pro",
     description:
       "MacBook Pro 2021 with mini-LED display may launch between September, November",
@@ -155,7 +155,7 @@ export const products = [
     ],
   },
   {
-    id: 7,
+    _id: 7,
     title: "Samsung Galaxy Book",
     description:
       "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
@@ -174,7 +174,7 @@ export const products = [
     ],
   },
   {
-    id: 8,
+    _id: 8,
     title: "Microsoft Surface Laptop 4",
     description:
       "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
@@ -194,7 +194,7 @@ export const products = [
     ],
   },
   {
-    id: 9,
+    _id: 9,
     title: "Infinix INBOOK",
     description:
       "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
@@ -214,7 +214,7 @@ export const products = [
     ],
   },
   {
-    id: 10,
+    _id: 10,
     title: "HP Pavilion 15-DK1056WM",
     description:
       "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
@@ -233,7 +233,7 @@ export const products = [
     ],
   },
   {
-    id: 11,
+    _id: 11,
     title: "perfume Oil",
     description:
       "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
@@ -252,7 +252,7 @@ export const products = [
     ],
   },
   {
-    id: 12,
+    _id: 12,
     title: "Brown Perfume",
     description: "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
     price: 40,
@@ -271,7 +271,7 @@ export const products = [
     ],
   },
   {
-    id: 13,
+    _id: 13,
     title: "Fog Scent Xpressio Perfume",
     description:
       "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
@@ -291,7 +291,7 @@ export const products = [
     ],
   },
   {
-    id: 14,
+    _id: 14,
     title: "Non-Alcoholic Concentrated Perfume Oil",
     description:
       "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
@@ -310,7 +310,7 @@ export const products = [
     ],
   },
   {
-    id: 15,
+    _id: 15,
     title: "Eau De Perfume Spray",
     description:
       "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
@@ -330,7 +330,7 @@ export const products = [
     ],
   },
   {
-    id: 16,
+    _id: 16,
     title: "Hyaluronic Acid Serum",
     description:
       "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
@@ -350,7 +350,7 @@ export const products = [
     ],
   },
   {
-    id: 17,
+    _id: 17,
     title: "Tree Oil 30ml",
     description:
       "Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria,",
@@ -369,7 +369,7 @@ export const products = [
     ],
   },
   {
-    id: 18,
+    _id: 18,
     title: "Oil Free Moisturizer 100ml",
     description:
       "Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.",
@@ -389,7 +389,7 @@ export const products = [
     ],
   },
   {
-    id: 19,
+    _id: 19,
     title: "Skin Beauty Serum.",
     description:
       "Product name: rorec collagen hyaluronic acid white face serum riceNet weight: 15 m",
@@ -408,7 +408,7 @@ export const products = [
     ],
   },
   {
-    id: 20,
+    _id: 20,
     title: "Freckle Treatment Cream- 15gm",
     description:
       "Fair & Clear is Pakistan's only pure Freckle cream which helpsfade Freckles, Darkspots and pigments. Mercury level is 0%, so there are no side effects.",
@@ -428,7 +428,7 @@ export const products = [
     ],
   },
   {
-    id: 21,
+    _id: 21,
     title: "- Daal Masoor 500 grams",
     description: "Fine quality Branded Product Keep in a cool and dry place",
     price: 20,
@@ -445,7 +445,7 @@ export const products = [
     ],
   },
   {
-    id: 22,
+    _id: 22,
     title: "Elbow Macaroni - 400 gm",
     description: "Product details of Bake Parlor Big Elbow Macaroni - 400 gm",
     price: 14,
@@ -462,7 +462,7 @@ export const products = [
     ],
   },
   {
-    id: 23,
+    _id: 23,
     title: "Orange Essence Food Flavou",
     description:
       "Specifications of Orange Essence Food Flavour For Cakes and Baking Food Item",
@@ -482,7 +482,7 @@ export const products = [
     ],
   },
   {
-    id: 24,
+    _id: 24,
     title: "cereals muesli fruit nuts",
     description:
       "original fauji cereal muesli 250gm box pack original fauji cereals muesli fruit nuts flakes breakfast cereal break fast faujicereals cerels cerel foji fouji",
@@ -502,7 +502,7 @@ export const products = [
     ],
   },
   {
-    id: 25,
+    _id: 25,
     title: "Gulab Powder 50 Gram",
     description: "Dry Rose Flower Powder Gulab Powder 50 Gram • Treats Wounds",
     price: 70,
@@ -521,7 +521,7 @@ export const products = [
     ],
   },
   {
-    id: 26,
+    _id: 26,
     title: "Plant Hanger For Home",
     description:
       "Boho Decor Plant Hanger For Home Wall Decoration Macrame Wall Hanging Shelf",
@@ -542,7 +542,7 @@ export const products = [
     ],
   },
   {
-    id: 27,
+    _id: 27,
     title: "Flying Wooden Bird",
     description:
       "Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm",
@@ -562,7 +562,7 @@ export const products = [
     ],
   },
   {
-    id: 28,
+    _id: 28,
     title: "3D Embellishment Art Lamp",
     description:
       "3D led lamp sticker Wall sticker 3d wall art light on/off button  cell operated (included)",
@@ -582,7 +582,7 @@ export const products = [
     ],
   },
   {
-    id: 29,
+    _id: 29,
     title: "Handcraft Chinese style",
     description:
       "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
@@ -602,7 +602,7 @@ export const products = [
     ],
   },
   {
-    id: 30,
+    _id: 30,
     title: "Key Holder",
     description:
       "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality",

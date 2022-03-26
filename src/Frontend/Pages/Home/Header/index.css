@@ -14,7 +14,6 @@
 }
 a {
   text-decoration: none;
-  color: var(--black);
   border: none;
   outline: none;
 }
@@ -77,19 +76,25 @@ a {
   padding: 5px 40px;
   color: var(--primary);
 }
-
+.kash-badge {
+  left: 0.6rem;
+  top: -0.9rem;
+  margin: 0;
+  padding: 0;
+}
 .cart {
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  position: relative;
+}
+.cart > a {
+  color: var(--white);
 }
 .cart > :nth-child(1) {
   color: var(--white);
-}
-.cart > :nth-child(2) {
-  color: var(--white);
-  font-weight: 550;
-  font-size: large;
+  /* font-weight: 550;*/
+  font-size: 1.2rem;
 }
 
 .fa-circle-user {
