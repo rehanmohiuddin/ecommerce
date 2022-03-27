@@ -90,6 +90,7 @@ a {
 }
 .cart > a {
   color: var(--white);
+  white-space: nowrap;
 }
 .cart > :nth-child(1) {
   color: var(--white);

@@ -1,14 +1,3 @@
-#kash-modal {
-  display: flex;
-}
-.kash-modal {
-  top: 0;
-  display: flex;
-  flex-direction: row;
-  height: 65vh;
-  flex-flow: row wrap;
-  width: 40%;
-}
 .auth-left,
 .auth-right {
   padding: 2rem 0.8rem 0.8rem 0.8rem;

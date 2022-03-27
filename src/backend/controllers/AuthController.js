@@ -96,3 +96,43 @@ export const loginHandler = function (schema, request) {
     );
   }
 };
+
+export const checkAuthenticationHandler = function (schema, request) {
+  const { email, token } = JSON.parse(request.requestBody);
+  try {
+    const foundUser = schema.users.findBy({ email });
+    if (!foundUser) {
+      return new Response(
+        404,
+        {},
+        { errors: ["The email you entered is not Registered. Not Found error"] }
+      );
+    }
+    const encodedToken = sign(
+      { _id: foundUser._id, email },
+      process.env.REACT_APP_JWT_SECRET
+    );
+
+    if (encodedToken === token) {
+      return new Response(200, {}, { foundUser, encodedToken });
+    }
+    new Response(
+      401,
+      {},
+      {
+        errors: [
+          "The credentials you entered are invalid. Unauthorized access error.",
+        ],
+      }
+    );
+  } catch (error) {
+    console.log({ error });
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};

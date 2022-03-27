@@ -8,14 +8,17 @@ import Header from "./Header";
 import { useAuth } from "../../Context/Auth";
 import Auth from "../Auth";
 import Loader from "../../Utility/components/Loader";
+import isAuth from "../../hooks/isAuthenticated";
+import Profile from "../../Pages/Profile";
 
 const Home = () => {
-  const { authState, dispatch } = useAuth();
-
+  const { authState } = useAuth();
+  isAuth();
   return (
     <div>
       <Header />
-      {(authState.login || authState.register) && <Auth />}
+      <Auth />
+      <Profile />
       <Category />
       <Carousel />
       <Featured />

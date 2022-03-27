@@ -2,13 +2,14 @@ import {
   faHeart,
   faSearch,
   faShoppingCart,
+  faSignOut,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 import { headerImg, plusImg } from "../../../../constants";
-import { OPEN_AUTH_COMP } from "../../../actions/Auth";
+import { LOGOUT, OPEN_AUTH_COMP, PROFILE_COMP } from "../../../actions/Auth";
 import { useAuth } from "../../../Context/Auth";
 import { useCart } from "../../../Context/Cart";
 import { useWishList } from "../../../Context/Wishlist";
@@ -16,10 +17,18 @@ import Button from "../../../Utility/components/Button";
 import "./index.css";
 
 const Header = () => {
-  const { isLoggedIn, user, dispatch } = useAuth();
+  const { isLoggedIn, user, dispatch, isAuthenticated } = useAuth();
   const { cart } = useCart();
   const { itemCount } = cart;
   const wishlistCount = useWishList().itemCount;
+  const signOutHandler = () => dispatch({ type: LOGOUT });
+
+  const profileHandler = () => {
+    dispatch({
+      type: PROFILE_COMP,
+      data: true,
+    });
+  };
   return (
     <header className="header">
       <div>
@@ -42,7 +51,11 @@ const Header = () => {
           <FontAwesomeIcon className="search-icon color-blue" icon={faSearch} />
         </div>
         {isLoggedIn ? (
-          <FontAwesomeIcon size="2x" icon={faUserCircle} />
+          <FontAwesomeIcon
+            onClick={profileHandler}
+            size="2x"
+            icon={faUserCircle}
+          />
         ) : (
           <Button
             clickFun={() =>
@@ -77,6 +90,12 @@ const Header = () => {
           )}
           <Link to={"/cart"}>Cart</Link>
         </div>
+        {isAuthenticated && (
+          <div className="cart" onClick={signOutHandler}>
+            <FontAwesomeIcon size="1x" icon={faSignOut} />
+            <Link to={"/"}>Sign Out</Link>
+          </div>
+        )}
       </div>
     </header>
   );

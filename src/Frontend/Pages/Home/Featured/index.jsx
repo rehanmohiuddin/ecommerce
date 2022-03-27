@@ -20,7 +20,7 @@ const Featured = () => {
     <div className=" featured-container">
       <div className="featured-header kash-flex kash-flex-end">
         <h2 className="kash-h5">Products To Check Out</h2>
-        <Button navigate="/" type="secondary" data="View All" />
+        <Button navigate="/products" type="secondary" data="View All" />
       </div>
       <h3>Suggested for You</h3>
       <div className="product-border"></div>

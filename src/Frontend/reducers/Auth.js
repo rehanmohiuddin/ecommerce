@@ -10,6 +10,13 @@ import {
   LOGIN_FAILURE,
   REGISTER_FAILURE,
   REGISTER_SUCCESS,
+  GET_TOKEN,
+  GET_TOKEN_SUCCESS,
+  GET_TOKEN_FAILURE,
+  loginObject,
+  LOGOUT,
+  OPEN_MODAL,
+  PROFILE_COMP,
 } from "../actions/Auth";
 
 const LoginReducer = (state = loginObject, action) => {
@@ -17,7 +24,6 @@ const LoginReducer = (state = loginObject, action) => {
     case CLOSE_AUTH_COMP:
       return {
         ...state,
-
         authState: {
           login: false,
           register: false,
@@ -40,14 +46,20 @@ const LoginReducer = (state = loginObject, action) => {
         loading: true,
       };
     case LOGIN_SUCCESS:
-      localStorage.setItem("token", action.data.encodedToken);
-      localStorage.setItem("user", JSON.stringify(action.data.foundUser));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          ...action.data.foundUser,
+          encodedToken: action.data.encodedToken,
+        })
+      );
       return {
         ...state,
         loading: false,
         isLoggedIn: true,
         user: { ...action.data.foundUser, token: action.data.encodedToken },
         AuthMessage: LOGIN_SUCCESS,
+        isAuthenticated: true,
       };
     case LOGIN_FAILURE:
       return {
@@ -82,6 +94,51 @@ const LoginReducer = (state = loginObject, action) => {
         loading: false,
         isLoggedIn: false,
         ...action.data,
+      };
+    case GET_TOKEN:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_TOKEN_SUCCESS:
+      const _user = localStorage.getItem("user")
+        ? JSON.parse(localStorage.getItem("user"))
+        : {};
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          ..._user,
+          encodedToken: action.data.encodedToken,
+        })
+      );
+
+      return {
+        ...state,
+        loading: false,
+        isLoggedIn: true,
+        user: {
+          ...state.user,
+          encodedToken: action.data.encodedToken,
+        },
+        isAuthenticated: true,
+      };
+    case GET_TOKEN_FAILURE:
+      return {
+        ...state,
+        isLoggedIn: false,
+        isAuthenticated: false,
+        loading: false,
+      };
+    case LOGOUT:
+      localStorage.removeItem("user");
+      return {
+        ...state,
+        ...loginObject,
+      };
+    case PROFILE_COMP:
+      return {
+        ...state,
+        profileOpen: action.data,
       };
     default:
       return { ...state };
