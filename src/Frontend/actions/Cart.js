@@ -3,6 +3,9 @@ const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const UPDATE_CART = "UPDATE_CART";
 const GET_ITEMS_CART = "GET_ITEMS_CART";
 
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
+
 const standardPriceDelivery = 49 + 29;
 
 const cartObject = {
@@ -19,4 +22,6 @@ export {
   cartObject,
   GET_ITEMS_CART,
   standardPriceDelivery,
+  INCREMENT,
+  DECREMENT,
 };

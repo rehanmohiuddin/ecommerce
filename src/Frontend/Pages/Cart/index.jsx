@@ -8,7 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  DECREMENT,
   GET_ITEMS_CART,
+  INCREMENT,
   REMOVE_FROM_CART,
   UPDATE_CART,
 } from "../../actions/Cart";
@@ -33,13 +35,11 @@ function Index() {
   };
 
   const updateTheCart = ({ type, item }) => {
-    const _quantity =
-      type === "INCREMENT" ? item.quantity + 1 : item.quantity - 1;
     dispatch({
       type: UPDATE_CART,
       data: {
-        _id: item._id,
-        quantity: _quantity,
+        type,
+        _product: item,
       },
     });
   };
@@ -87,7 +87,7 @@ function Index() {
                     <div
                       onClick={() =>
                         _cartItem.quantity > 1 &&
-                        updateTheCart({ type: "DECREMENT", item: _cartItem })
+                        updateTheCart({ type: DECREMENT, item: _cartItem })
                       }
                     >
                       <FontAwesomeIcon icon={faMinus} />
@@ -97,7 +97,7 @@ function Index() {
                     </div>
                     <div
                       onClick={() =>
-                        updateTheCart({ type: "INCREMENT", item: _cartItem })
+                        updateTheCart({ type: INCREMENT, item: _cartItem })
                       }
                     >
                       <FontAwesomeIcon icon={faPlus} />

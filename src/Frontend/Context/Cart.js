@@ -48,11 +48,14 @@ const removeFromCart = (productId) => {
   return _cart;
 };
 
-const updateToCart = ({ _id, quantity }) => {
+const updateToCart = (product) => {
+  const { _id, quantity } = product;
   const user_local =
     localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"));
   const _Products = [...user_local.cart];
-  _Products.forEach((_pro) => (_pro.quantity = _pro._id === _id && quantity));
+  _Products.forEach(
+    (_pro) => (_pro.quantity = _pro._id === _id ? quantity : _pro.quantity)
+  );
   const _user = {
     ...user_local,
     cart: [..._Products],
