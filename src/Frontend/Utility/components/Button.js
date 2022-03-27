@@ -20,7 +20,13 @@ function Button(props) {
   return (
     <button className={getButtonColor(type)} onClick={clickFun}>
       <div>
-        <Link to={navigate}>{data}</Link>
+        {navigate ? (
+          <Link className="btn-link" to={navigate}>
+            {data}
+          </Link>
+        ) : (
+          data
+        )}
       </div>
     </button>
   );
@@ -33,7 +39,7 @@ Button.propTypes = {
   clickFun: Proptypes.func,
 };
 Button.defaultProps = {
-  navigate: "/",
+  navigate: null,
   type: "primary",
   data: "LOGIN",
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { AuthProvider } from "./Auth";
+import { CartProvider } from "./Cart";
 import { CategoryProvider } from "./category";
 import { ProductProvider } from "./products";
 import { SnackProvider } from "./SnackMessage";
@@ -9,7 +10,9 @@ function ContextProvider({ children }) {
     <SnackProvider>
       <AuthProvider>
         <CategoryProvider>
-          <ProductProvider>{children}</ProductProvider>
+          <ProductProvider>
+            <CartProvider>{children}</CartProvider>
+          </ProductProvider>
         </CategoryProvider>
       </AuthProvider>
     </SnackProvider>

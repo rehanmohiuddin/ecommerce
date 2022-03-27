@@ -17,14 +17,18 @@
   display: inline-block;
 }
 
-.primary-btn > div > a {
+.primary-btn > div {
   padding: 5px 40px;
+  color: var(--primary);
+}
+.primary-btn > div > .btn-link {
   color: var(--primary);
 }
 .blue-color {
   background-color: var(--primary);
 }
-.blue-color > div > a {
+.blue-color > div,
+.blue-color > div > .btn-link {
   color: var(--white);
 }
 
@@ -32,7 +36,8 @@
   background-color: var(--orange);
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
 }
-.orange-color > div > a {
+.orange-color > div,
+.orange-color > div > .btn-link {
   color: var(--white);
 }
 
