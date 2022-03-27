@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { ADD_TO_CART } from "../../actions/Cart";
 import { GET_ALL_PRODUCTS } from "../../actions/Products";
+import { ADD_TO_WISHLIST } from "../../actions/Wishlist";
 import { useCart } from "../../Context/Cart";
 import { getAllProducts, useProducts } from "../../Context/products";
 import { SHOW_MESSAGE, useSnackBar } from "../../Context/SnackMessage";
+import { useWishList } from "../../Context/Wishlist";
 import Button from "../../Utility/components/Button";
 
 function Products() {
@@ -11,6 +13,8 @@ function Products() {
   const snackbar = useSnackBar();
   const { cart } = useCart();
   const [_products, setProducts] = useState([]);
+  const wishList = useWishList();
+  const wishlistDispatch = wishList.dispatch;
   useEffect(async () => {
     dispatch({
       type: GET_ALL_PRODUCTS,
@@ -26,6 +30,14 @@ function Products() {
     snackbar.dispatch({
       type: SHOW_MESSAGE,
       data: { message: "Item Added To Cart" },
+    });
+  };
+
+  const handleAddToWishlist = (product) => {
+    wishlistDispatch({ type: ADD_TO_WISHLIST, data: product });
+    snackbar.dispatch({
+      type: SHOW_MESSAGE,
+      data: { message: "Item Added To Wishlist" },
     });
   };
   return (
@@ -60,7 +72,11 @@ function Products() {
                 <div>Up to ₹15000 off on Exchange</div>
               </div>
               <div className="product-actions">
-                <Button type="secondary" data="Add To Wishlist" />
+                <Button
+                  clickFun={() => handleAddToWishlist(_product)}
+                  type="secondary"
+                  data="Add To Wishlist"
+                />
                 <Button
                   navigate={null}
                   clickFun={() => handleAddToCart(_product)}

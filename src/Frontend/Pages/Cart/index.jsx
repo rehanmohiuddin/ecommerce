@@ -16,6 +16,7 @@ import { useCart } from "../../Context/Cart";
 import { getDiscountedTotalPrice } from "../../reducers/Cart";
 import Button from "../../Utility/components/Button";
 import HomeContainer from "../../Utility/components/HomeContainer";
+import { getDeliveryDate } from "../../Utility/Helpers";
 import "./index.css";
 
 function Index() {
@@ -30,14 +31,6 @@ function Index() {
       data: { product_id: product._id },
     });
   };
-  const getDeliveryDate = () =>
-    [
-      ...new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000)
-        .toString()
-        .split(" "),
-    ]
-      .filter((val, ind) => ind < 3)
-      .join(" ");
 
   const updateTheCart = ({ type, item }) => {
     const _quantity =
@@ -50,7 +43,7 @@ function Index() {
       },
     });
   };
-  const showCart = cart.cart.length > 0;
+  const showCart = itemCount > 0;
   return (
     <HomeContainer>
       <div className="cart-container ">

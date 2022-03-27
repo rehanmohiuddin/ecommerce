@@ -1,4 +1,5 @@
 import {
+  faHeart,
   faSearch,
   faShoppingCart,
   faUserCircle,
@@ -10,6 +11,7 @@ import { headerImg, plusImg } from "../../../../constants";
 import { OPEN_AUTH_COMP } from "../../../actions/Auth";
 import { useAuth } from "../../../Context/Auth";
 import { useCart } from "../../../Context/Cart";
+import { useWishList } from "../../../Context/Wishlist";
 import Button from "../../../Utility/components/Button";
 import "./index.css";
 
@@ -17,6 +19,7 @@ const Header = () => {
   const { isLoggedIn, user, dispatch } = useAuth();
   const { cart } = useCart();
   const { itemCount } = cart;
+  const wishlistCount = useWishList().itemCount;
   return (
     <header className="header">
       <div>
@@ -56,7 +59,15 @@ const Header = () => {
             data="Login"
           />
         )}
-
+        <div className="cart">
+          <FontAwesomeIcon size="1x" icon={faHeart} />
+          {wishlistCount > 0 && (
+            <p class="kash-badge kash-subtitle kash-bg-red kash-badge-md kash-badge-absolute">
+              {wishlistCount}
+            </p>
+          )}
+          <Link to={"/wishlist"}>WishList</Link>
+        </div>
         <div className="cart">
           <FontAwesomeIcon size="1x" icon={faShoppingCart} />
           {itemCount > 0 && (

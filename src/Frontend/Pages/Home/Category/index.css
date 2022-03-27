@@ -15,3 +15,6 @@
 .category > :nth-child(2) {
   text-transform: capitalize;
 }
+.category-container > a {
+  color: var(--black);
+}
