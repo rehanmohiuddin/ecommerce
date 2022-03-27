@@ -10,6 +10,11 @@ import {
   removeFromWishlist,
 } from "../Context/Wishlist";
 
+const wishListAddFunction = (_product, wishlist) => {
+  addToWishlist(_product);
+  return [_product, ...wishlist];
+};
+
 const wishListReduce = (state = wishListObject, action) => {
   const { type, data } = action;
   const { wishlist } = state;
@@ -22,9 +27,12 @@ const wishListReduce = (state = wishListObject, action) => {
         itemCount: _getWishlist.length,
       };
     case ADD_TO_WISHLIST:
-      const _product = data.product;
-      addToWishlist(_product);
-      const _wishListAfterAdd = [_product, ...wishlist];
+      const productAlreadyExists =
+        wishlist.filter((_pro) => _pro._id === data._id).length > 0;
+      const _product = data;
+      const _wishListAfterAdd = productAlreadyExists
+        ? [...wishlist]
+        : wishListAddFunction(_product, wishlist);
       return {
         ...state,
         wishlist: [..._wishListAfterAdd],
