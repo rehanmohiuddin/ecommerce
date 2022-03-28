@@ -126,7 +126,6 @@ export const checkAuthenticationHandler = function (schema, request) {
       }
     );
   } catch (error) {
-    console.log({ error });
     return new Response(
       500,
       {},

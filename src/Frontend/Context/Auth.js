@@ -14,6 +14,8 @@ import { LoginReducer } from "../reducers/Auth";
 
 const AuthContext = createContext(loginObject);
 
+const getUser = () => localStorage.getItem("user");
+
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(LoginReducer, loginObject);
   return (
@@ -64,4 +66,4 @@ const register = async (data) => {
   }
 };
 
-export { useAuth, login, AuthProvider, register, checkAuth };
+export { useAuth, login, AuthProvider, register, checkAuth, getUser };

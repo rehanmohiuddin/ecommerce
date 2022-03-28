@@ -37,7 +37,6 @@ function Index() {
     dispatch({ type: REMOVE_FROM_WISHLIST, data: { product } });
 
   const showCart = itemCount > 0;
-  console.log({ wishlist });
   return (
     <HomeContainer>
       <div className="cart-container ">

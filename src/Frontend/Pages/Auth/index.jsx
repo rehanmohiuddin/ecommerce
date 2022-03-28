@@ -20,7 +20,6 @@ function Auth() {
   const showAuth = authState.login || authState.register;
   const closeAuth = () => {
     dispatch({ type: CLOSE_AUTH_COMP });
-    console.log("close");
   };
   useEffect(() => {
     if (AuthMessage) {
