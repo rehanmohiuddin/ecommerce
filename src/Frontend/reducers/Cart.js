@@ -5,6 +5,8 @@ import {
   REMOVE_FROM_CART,
   standardPriceDelivery,
   UPDATE_CART,
+  INCREMENT,
+  DECREMENT,
 } from "../actions/Cart";
 import {
   addToCart,
@@ -17,6 +19,7 @@ const AddCartTotalReducer = (total, product) =>
   total + product.discountedPrice * product.quantity;
 const RemoveCartTotalReducer = (total, product) =>
   total - product.discountedPrice * product.quantity;
+
 const mapTotalReducer = {
   addCartCalculation: AddCartTotalReducer,
   removeCartCalculation: RemoveCartTotalReducer,
@@ -24,13 +27,49 @@ const mapTotalReducer = {
 
 const getDiscountedTotalPrice = (total) => (total * 0.1).toFixed(2);
 
+const quantityMapper = {
+  INCREMENT: (quantity) => quantity + 1,
+  DECREMENT: (quantity) => quantity - 1,
+};
+
+const updateCartFunction = (_product, type) => {
+  const _quantity = quantityMapper[type](_product.quantity);
+  const _updateProduct = { ..._product, quantity: _quantity };
+  const _products = updateToCart(_updateProduct);
+  const _totalCartPrice = _products.reduce(
+    mapTotalReducer["addCartCalculation"],
+    0
+  );
+  const grandTotalAfter =
+    _totalCartPrice +
+    standardPriceDelivery -
+    getDiscountedTotalPrice(_totalCartPrice);
+
+  return { _products, _totalCartPrice, grandTotalAfter };
+};
+const addProductFunction = (product, cart, total) => {
+  const productToBeAdded = { ...product, quantity: 1 };
+  const _products = [productToBeAdded, ...cart];
+  const _totalCartPrice = _products.reduce(
+    mapTotalReducer["addCartCalculation"],
+    total
+  );
+  addToCart(productToBeAdded);
+  const grandTotalAfter =
+    _totalCartPrice +
+    standardPriceDelivery -
+    getDiscountedTotalPrice(_totalCartPrice);
+  return { _products, _totalCartPrice, grandTotalAfter };
+};
 const cartReducerFunction = (state = cartObject, action) => {
-  switch (action.type) {
+  const { type, data } = action;
+  const { cart, total } = state;
+  switch (type) {
     case GET_ITEMS_CART:
       const _cartItems = getCart();
       const _totalCart = _cartItems.reduce(
         mapTotalReducer["addCartCalculation"],
-        state.total
+        total
       );
       const grandTotal =
         _totalCart +
@@ -44,32 +83,26 @@ const cartReducerFunction = (state = cartObject, action) => {
         grandTotal: grandTotal,
       };
     case ADD_TO_CART:
-      const productToBeAdded = { ...action.data.product, quantity: 1 };
-      const _cart = [productToBeAdded, ...state.cart];
-      const _totalCartAfterAdd = _cart.reduce(
-        mapTotalReducer["addCartCalculation"],
-        state.total
-      );
-      addToCart(productToBeAdded);
-      const grandTotalAfterAdd =
-        _totalCartAfterAdd +
-        standardPriceDelivery -
-        getDiscountedTotalPrice(_totalCartAfterAdd);
+      const product = cart.find((_pro) => _pro._id === data.product._id);
+      const productToBeAdded = { ...data.product, quantity: 1 };
+      const { _products, _totalCartPrice, grandTotalAfter } = product
+        ? updateCartFunction(product, INCREMENT)
+        : addProductFunction(productToBeAdded, cart, total);
       return {
         ...state,
-        cart: _cart,
-        total: _totalCartAfterAdd,
-        itemCount: _cart.length,
-        grandTotal: grandTotalAfterAdd,
+        cart: [..._products],
+        total: _totalCartPrice,
+        itemCount: _products.length,
+        grandTotal: grandTotalAfter,
       };
     case REMOVE_FROM_CART:
-      const _filteredCart = state.cart.filter(
+      const _filteredCart = cart.filter(
         (_pro) => _pro._id !== action.data.product_id
       );
       removeFromCart(action.data.product_id);
       const _totalCartAfterRemove = _filteredCart.reduce(
         mapTotalReducer["removeCartCalculation"],
-        state.total
+        total
       );
       const grandTotalAfterRemove =
         _totalCartAfterRemove +
@@ -83,22 +116,14 @@ const cartReducerFunction = (state = cartObject, action) => {
         grandTotal: grandTotalAfterRemove,
       };
     case UPDATE_CART:
-      const _product = action.data;
-      const _updatedProducts = updateToCart(_product);
-      const _totalUpdateCart = _updatedProducts.reduce(
-        mapTotalReducer["addCartCalculation"],
-        0
-      );
-      const grandTotalAfterUpdate =
-        _totalUpdateCart +
-        standardPriceDelivery -
-        getDiscountedTotalPrice(_totalUpdateCart);
+      const { _product, type } = data;
+      const updatedObj = updateCartFunction(_product, type);
       return {
         ...state,
-        cart: [..._updatedProducts],
-        total: _totalUpdateCart,
-        itemCount: _updatedProducts.length,
-        grandTotal: grandTotalAfterUpdate,
+        cart: [...updatedObj._products],
+        total: updatedObj._totalCartPrice,
+        itemCount: updatedObj._products.length,
+        grandTotal: updatedObj.grandTotalAfter,
       };
     default:
       return { ...state };

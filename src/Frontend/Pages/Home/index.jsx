@@ -11,6 +11,7 @@ import Loader from "../../Utility/components/Loader";
 
 const Home = () => {
   const { authState, dispatch } = useAuth();
+
   return (
     <div>
       <Header />

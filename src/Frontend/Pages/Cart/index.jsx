@@ -8,7 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  DECREMENT,
   GET_ITEMS_CART,
+  INCREMENT,
   REMOVE_FROM_CART,
   UPDATE_CART,
 } from "../../actions/Cart";
@@ -16,6 +18,7 @@ import { useCart } from "../../Context/Cart";
 import { getDiscountedTotalPrice } from "../../reducers/Cart";
 import Button from "../../Utility/components/Button";
 import HomeContainer from "../../Utility/components/HomeContainer";
+import { getDeliveryDate } from "../../Utility/Helpers";
 import "./index.css";
 
 function Index() {
@@ -30,27 +33,17 @@ function Index() {
       data: { product_id: product._id },
     });
   };
-  const getDeliveryDate = () =>
-    [
-      ...new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000)
-        .toString()
-        .split(" "),
-    ]
-      .filter((val, ind) => ind < 3)
-      .join(" ");
 
   const updateTheCart = ({ type, item }) => {
-    const _quantity =
-      type === "INCREMENT" ? item.quantity + 1 : item.quantity - 1;
     dispatch({
       type: UPDATE_CART,
       data: {
-        _id: item._id,
-        quantity: _quantity,
+        type,
+        _product: item,
       },
     });
   };
-  const showCart = cart.cart.length > 0;
+  const showCart = itemCount > 0;
   return (
     <HomeContainer>
       <div className="cart-container ">
@@ -94,7 +87,7 @@ function Index() {
                     <div
                       onClick={() =>
                         _cartItem.quantity > 1 &&
-                        updateTheCart({ type: "DECREMENT", item: _cartItem })
+                        updateTheCart({ type: DECREMENT, item: _cartItem })
                       }
                     >
                       <FontAwesomeIcon icon={faMinus} />
@@ -104,7 +97,7 @@ function Index() {
                     </div>
                     <div
                       onClick={() =>
-                        updateTheCart({ type: "INCREMENT", item: _cartItem })
+                        updateTheCart({ type: INCREMENT, item: _cartItem })
                       }
                     >
                       <FontAwesomeIcon icon={faPlus} />

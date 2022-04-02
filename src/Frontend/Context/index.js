@@ -4,6 +4,7 @@ import { CartProvider } from "./Cart";
 import { CategoryProvider } from "./category";
 import { ProductProvider } from "./products";
 import { SnackProvider } from "./SnackMessage";
+import { WishListProvider } from "./Wishlist";
 
 function ContextProvider({ children }) {
   return (
@@ -11,7 +12,9 @@ function ContextProvider({ children }) {
       <AuthProvider>
         <CategoryProvider>
           <ProductProvider>
-            <CartProvider>{children}</CartProvider>
+            <CartProvider>
+              <WishListProvider>{children}</WishListProvider>
+            </CartProvider>
           </ProductProvider>
         </CategoryProvider>
       </AuthProvider>
