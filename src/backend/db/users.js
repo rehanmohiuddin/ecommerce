@@ -8,11 +8,16 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: uuid(),
+    _id: "x1-A5-e345",
     name: "Rehan Mohiuddin",
     email: "rehan.4942@gmail.com",
     password: "123456",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    gender: "Male",
+    address: "Flat No 103 Jublee Hills Road No 10 Hyderabad Telangana ",
+    pincode: "500059",
+    country: "India",
+    state: "Telangana",
   },
 ];

@@ -10,16 +10,17 @@ import "./index.css";
 import Login from "./Login";
 import Register from "./Register";
 import { AuthMessageList } from "./AuthUtil";
+import Modal from "../../Utility/components/Modal";
 
 function Auth() {
   const [ref, clickedOutside] = useOutsideClick();
   const { dispatch, AuthMessage, authState, isLoggedIn, registration } =
     useAuth();
   const snackbar = useSnackBar();
-  const redirect = useNavigate();
-  useEffect(() => {
-    clickedOutside && dispatch({ type: CLOSE_AUTH_COMP });
-  }, [clickedOutside]);
+  const showAuth = authState.login || authState.register;
+  const closeAuth = () => {
+    dispatch({ type: CLOSE_AUTH_COMP });
+  };
   useEffect(() => {
     if (AuthMessage) {
       snackbar.dispatch({
@@ -34,12 +35,17 @@ function Auth() {
     }
   }, [AuthMessage]);
   return (
-    <div id="kash-modal" class="kash-modal-container">
-      <div ref={ref} class="kash-modal">
-        <Snackbar message={"Login Success"} />
-        {authState.register ? <Register /> : <Login />}
-      </div>
-    </div>
+    <>
+      {showAuth && (
+        <Modal
+          show={authState.login || authState.register}
+          closeCallBack={closeAuth}
+        >
+          <Snackbar message={"Login Success"} />
+          {authState.register ? <Register /> : <Login />}
+        </Modal>
+      )}
+    </>
   );
 }
 

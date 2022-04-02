@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { OPEN_AUTH_COMP } from "../../actions/Auth";
 import { ADD_TO_CART } from "../../actions/Cart";
 import { GET_ALL_PRODUCTS } from "../../actions/Products";
 import { ADD_TO_WISHLIST } from "../../actions/Wishlist";
+import { useAuth } from "../../Context/Auth";
 import { useCart } from "../../Context/Cart";
 import { getAllProducts, useProducts } from "../../Context/products";
 import { SHOW_MESSAGE, useSnackBar } from "../../Context/SnackMessage";
 import { useWishList } from "../../Context/Wishlist";
+import unAuthorized from "../../hooks/unAuthorized";
 import Button from "../../Utility/components/Button";
 
 function Products() {
@@ -14,7 +18,10 @@ function Products() {
   const { cart } = useCart();
   const [_products, setProducts] = useState([]);
   const wishList = useWishList();
+  const Auth = useAuth();
+  const { isAuthenticated } = Auth;
   const wishlistDispatch = wishList.dispatch;
+  const [redirectForAuth] = unAuthorized();
   useEffect(async () => {
     dispatch({
       type: GET_ALL_PRODUCTS,
@@ -31,6 +38,12 @@ function Products() {
       type: SHOW_MESSAGE,
       data: { message: "Item Added To Cart" },
     });
+  };
+
+  const checkAuthAndExecute = (f) => {
+    return (isAuth) => {
+      return (data) => (isAuth ? f(data) : redirectForAuth());
+    };
   };
 
   const handleAddToWishlist = (product) => {
@@ -73,13 +86,19 @@ function Products() {
               </div>
               <div className="product-actions">
                 <Button
-                  clickFun={() => handleAddToWishlist(_product)}
+                  clickFun={() => {
+                    const authAndRun = checkAuthAndExecute(handleAddToWishlist);
+                    authAndRun(isAuthenticated)(_product);
+                  }}
                   type="secondary"
                   data="Add To Wishlist"
                 />
                 <Button
                   navigate={null}
-                  clickFun={() => handleAddToCart(_product)}
+                  clickFun={() => {
+                    const authAndRun = checkAuthAndExecute(handleAddToCart);
+                    authAndRun(isAuthenticated)(_product);
+                  }}
                   type="orange"
                   data="Add To Cart"
                 />

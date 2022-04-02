@@ -120,3 +120,15 @@
     transform: translateY(0px);
   }
 }
+
+#kash-modal {
+  display: flex;
+}
+.kash-modal {
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  height: 65vh;
+  flex-flow: row wrap;
+  width: 40%;
+}

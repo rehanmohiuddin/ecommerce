@@ -1,5 +1,6 @@
 import { Server, Model, RestSerializer } from "miragejs";
 import {
+  checkAuthenticationHandler,
   loginHandler,
   signupHandler,
 } from "./backend/controllers/AuthController";
@@ -66,10 +67,9 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
-      // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
-
+      this.post("/auth/check", checkAuthenticationHandler.bind(this));
       this.get("/offers/carousel", getCarouselHandler.bind(this));
       this.get("/featured/products", getFeaturedProductsHandler.bind(this));
       // products routes (public)

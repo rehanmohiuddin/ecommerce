@@ -41,7 +41,6 @@ export const getProductsByCategoryHandler = (schema, request) => {
   try {
     const category = request.params.category;
     const products = schema.db.products.where({ category: category });
-    // console.log({ category, products });
     return new Response(200, {}, { products: products });
   } catch (error) {
     return new Response(

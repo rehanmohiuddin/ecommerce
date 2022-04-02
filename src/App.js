@@ -6,6 +6,7 @@ import Snackbar from "./Frontend/Utility/components/Snackbar";
 import { useSnackBar } from "./Frontend/Context/SnackMessage";
 import Cart from "./Frontend/Pages/Cart";
 import Wishlist from "./Frontend/Pages/Wishlist";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const { message } = useSnackBar();
@@ -14,8 +15,22 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <ProtectedRoute>
+              <Wishlist />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       {message && <Snackbar />}
     </div>
