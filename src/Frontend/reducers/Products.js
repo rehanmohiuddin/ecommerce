@@ -6,6 +6,7 @@ import {
   GET_FEATURED_PRODUCTS,
   productState,
   APPLY_FILTER,
+  GET_SEARCH_QUERY_SUCCESS,
 } from "../actions/Products";
 
 const priceFilterFunction = (filter, products) => {
@@ -48,6 +49,7 @@ const productsReducer = (state = productState, action) => {
         ...state,
         products: _discountedPrices,
         featuredProducts: [],
+        searchedProducts: [],
       };
     case GET_FEATURED_PRODUCTS:
       return {
@@ -100,6 +102,12 @@ const productsReducer = (state = productState, action) => {
       return {
         ...state,
         products: _ratingProducts,
+      };
+
+    case GET_SEARCH_QUERY_SUCCESS:
+      return {
+        ...state,
+        searchedProducts: action.data.products,
       };
 
     default:

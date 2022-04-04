@@ -67,3 +67,21 @@ export const getProductHandler = function (schema, request) {
     );
   }
 };
+
+export const searchProduct = function (schema, request) {
+  const searchQuery = request.params.productQuery;
+  try {
+    const products = schema.db.products.where((product) =>
+      product.title.toLowerCase().includes(searchQuery)
+    );
+    return new Response(200, {}, { products });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};

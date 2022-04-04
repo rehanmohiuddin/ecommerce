@@ -21,6 +21,7 @@ const getCart = () => {
   const _cart = user_local ? [...user_local.cart] : [];
   return _cart;
 };
+
 const addToCart = (product) => {
   const user_local =
     localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"));
