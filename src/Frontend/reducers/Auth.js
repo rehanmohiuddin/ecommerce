@@ -118,7 +118,8 @@ const LoginReducer = (state = loginObject, action) => {
         isLoggedIn: true,
         user: {
           ...state.user,
-          encodedToken: action.data.encodedToken,
+          ...action.data.foundUser,
+          token: action.data.encodedToken,
         },
         isAuthenticated: true,
       };
