@@ -22,6 +22,7 @@ const activeFilterState = {
   category: null,
   price: null,
   rating: null,
+  sortPrice: null,
 };
 
 export { categoryState, ratingState, selectedFilterState, activeFilterState };
