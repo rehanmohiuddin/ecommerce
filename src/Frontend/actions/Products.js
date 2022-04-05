@@ -4,6 +4,8 @@ const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
 const FILTER_BY_PRICE = "FILTER_BY_PRICE";
 const FILTER_BY_RATING = "FILTER_BY_RATING";
 const APPLY_FILTER = "APPLY_FILTER";
+const GET_SEARCH_QUERY_SUCCESS = "GET_SEARCH_QUERY_SUCCESS";
+const GET_SEARCH_QUERY_FAILURE = "GET_SEARCH_QUERY_FAILURE";
 
 const productState = {
   products: [],
@@ -11,6 +13,7 @@ const productState = {
   featuredProducts: [],
   selectedCategory: null,
   filteredProducts: [],
+  searchedProducts: [],
 };
 
 export {
@@ -21,4 +24,6 @@ export {
   FILTER_BY_PRICE,
   FILTER_BY_RATING,
   APPLY_FILTER,
+  GET_SEARCH_QUERY_FAILURE,
+  GET_SEARCH_QUERY_SUCCESS,
 };

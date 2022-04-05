@@ -14,6 +14,7 @@ import { useAuth } from "../../../Context/Auth";
 import { useCart } from "../../../Context/Cart";
 import { useWishList } from "../../../Context/Wishlist";
 import Button from "../../../Utility/components/Button";
+import Search from "../Search";
 import "./index.css";
 
 const Header = () => {
@@ -29,6 +30,7 @@ const Header = () => {
       data: true,
     });
   };
+
   return (
     <header className="header">
       <div>
@@ -42,14 +44,8 @@ const Header = () => {
             <img className="header-plus-img" src={plusImg} />
           </Link>
         </div>
-        <div className="header-search-bar-container">
-          <input
-            className="header-search-bar kash-input"
-            placeholder="Search for products, brands and more"
-            type={"text"}
-          />
-          <FontAwesomeIcon className="search-icon color-blue" icon={faSearch} />
-        </div>
+        <Search />
+
         {isLoggedIn ? (
           <FontAwesomeIcon
             onClick={profileHandler}

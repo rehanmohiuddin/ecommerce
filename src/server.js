@@ -20,6 +20,7 @@ import {
   getFeaturedProductsHandler,
   getProductHandler,
   getProductsByCategoryHandler,
+  searchProduct,
 } from "./backend/controllers/ProductController";
 import {
   addItemToWishlistHandler,
@@ -79,7 +80,7 @@ export function makeServer({ environment = "development" } = {}) {
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
       this.get("/categories/:categoryId", getCategoryHandler.bind(this));
-
+      this.get("/search/products/:productQuery", searchProduct.bind(this));
       // cart routes (private)
       this.get("/user/cart", getCartItemsHandler.bind(this));
       this.post("/user/cart", addItemToCartHandler.bind(this));

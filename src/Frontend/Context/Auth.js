@@ -48,10 +48,13 @@ const checkAuth = async () => {
 const login = async (data) => {
   try {
     const resp = await AxiosInstance.post("/api/auth/login", data);
+    console.log({ resp });
     return resp.status === 200
       ? { type: LOGIN_SUCCESS, data: resp.data }
       : { type: LOGIN_FAILURE, data: { error: "Some thing Went Wrong" } };
   } catch (e) {
+    console.log({ error });
+
     return { type: LOGIN_FAILURE, data: { error: e.toString() } };
   }
 };
