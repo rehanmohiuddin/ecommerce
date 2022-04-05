@@ -53,6 +53,7 @@ function Products() {
       data: { message: "Item Added To Wishlist" },
     });
   };
+
   return (
     <div className="products">
       <div className="category-products-container">
