@@ -7,6 +7,7 @@ import { useSnackBar } from "./Frontend/Context/SnackMessage";
 import Cart from "./Frontend/Pages/Cart";
 import Wishlist from "./Frontend/Pages/Wishlist";
 import ProtectedRoute from "./ProtectedRoute";
+import RouteNotFound from "./Frontend/Pages/PageNotFound";
 
 function App() {
   const { message } = useSnackBar();
@@ -31,6 +32,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<RouteNotFound />} />
       </Routes>
       {message && <Snackbar />}
     </div>

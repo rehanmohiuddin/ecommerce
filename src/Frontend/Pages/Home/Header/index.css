@@ -87,12 +87,13 @@ a {
   align-items: center;
   gap: 0.2rem;
   position: relative;
+  color: var(--white);
 }
 .cart > a {
   color: var(--white);
   white-space: nowrap;
 }
-.cart > :nth-child(1) {
+.icon {
   color: var(--white);
   /* font-weight: 550;*/
   font-size: 1.2rem;
@@ -101,4 +102,9 @@ a {
 .fa-circle-user {
   color: var(--white);
   cursor: pointer;
+}
+
+.route-active,
+.route-active > svg {
+  color: var(--app-dark-gray);
 }
