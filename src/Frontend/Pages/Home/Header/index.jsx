@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { headerImg, plusImg } from "../../../../constants";
 import { LOGOUT, OPEN_AUTH_COMP, PROFILE_COMP } from "../../../actions/Auth";
 import { useAuth } from "../../../Context/Auth";
@@ -30,6 +30,9 @@ const Header = () => {
       data: true,
     });
   };
+
+  const getActiveClassName = (isActive) =>
+    isActive ? "cart route-active" : "cart";
 
   return (
     <header className="header">
@@ -68,27 +71,40 @@ const Header = () => {
             data="Login"
           />
         )}
-        <div className="cart">
-          <FontAwesomeIcon size="1x" icon={faHeart} />
-          {wishlistCount > 0 && (
-            <p class="kash-badge kash-subtitle kash-bg-red kash-badge-md kash-badge-absolute">
-              {wishlistCount}
-            </p>
+        <NavLink to={"/wishlist"}>
+          {({ isActive }) => (
+            <div className={getActiveClassName(isActive)}>
+              <FontAwesomeIcon className="icon" size="1x" icon={faHeart} />
+              {wishlistCount > 0 && (
+                <p class="kash-badge kash-subtitle kash-bg-red kash-badge-md kash-badge-absolute">
+                  {wishlistCount}
+                </p>
+              )}
+              WishList
+            </div>
           )}
-          <Link to={"/wishlist"}>WishList</Link>
-        </div>
-        <div className="cart">
-          <FontAwesomeIcon size="1x" icon={faShoppingCart} />
-          {itemCount > 0 && (
-            <p class="kash-badge kash-subtitle kash-bg-red kash-badge-md kash-badge-absolute">
-              {itemCount}
-            </p>
+        </NavLink>
+        <NavLink to={"/cart"}>
+          {({ isActive }) => (
+            <div className={getActiveClassName(isActive)}>
+              <FontAwesomeIcon
+                className="icon"
+                size="1x"
+                icon={faShoppingCart}
+              />
+              {itemCount > 0 && (
+                <p class="kash-badge kash-subtitle kash-bg-red kash-badge-md kash-badge-absolute">
+                  {itemCount}
+                </p>
+              )}
+              Cart
+            </div>
           )}
-          <Link to={"/cart"}>Cart</Link>
-        </div>
+        </NavLink>
+
         {isAuthenticated && (
           <div className="cart" onClick={signOutHandler}>
-            <FontAwesomeIcon size="1x" icon={faSignOut} />
+            <FontAwesomeIcon className="icon" size="1x" icon={faSignOut} />
             <Link to={"/"}>Sign Out</Link>
           </div>
         )}

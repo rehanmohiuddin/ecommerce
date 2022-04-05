@@ -14,7 +14,10 @@ import {
   REMOVE_FROM_CART,
   UPDATE_CART,
 } from "../../actions/Cart";
+import { ADD_TO_WISHLIST } from "../../actions/Wishlist";
 import { useCart } from "../../Context/Cart";
+import { SHOW_MESSAGE, useSnackBar } from "../../Context/SnackMessage";
+import { useWishList } from "../../Context/Wishlist";
 import { getDiscountedTotalPrice } from "../../reducers/Cart";
 import Button from "../../Utility/components/Button";
 import HomeContainer from "../../Utility/components/HomeContainer";
@@ -24,13 +27,27 @@ import "./index.css";
 function Index() {
   const { cart } = useCart();
   const { total, itemCount, grandTotal, dispatch } = cart;
+  const wishListDispatch = useWishList().dispatch;
+  const snackbar = useSnackBar();
+
   useEffect(() => {
     cart.dispatch({ type: GET_ITEMS_CART });
   }, []);
+
   const removeCart = (product) => {
     cart.dispatch({
       type: REMOVE_FROM_CART,
       data: { product_id: product._id },
+    });
+  };
+
+  const handleMoveToWishlist = (product) => {
+    wishListDispatch({ type: ADD_TO_WISHLIST, data: product });
+    dispatch({ type: REMOVE_FROM_CART, data: { product_id: product._id } });
+
+    snackbar.dispatch({
+      type: SHOW_MESSAGE,
+      data: { message: "Item Moved To Wishlist" },
     });
   };
 
@@ -103,7 +120,11 @@ function Index() {
                       <FontAwesomeIcon icon={faPlus} />
                     </div>
                   </div>
-                  <Button type="primary" data="SAVE FOR LATER" />
+                  <Button
+                    type="primary"
+                    data="Move TO WISH LIST"
+                    clickFun={() => handleMoveToWishlist(_cartItem)}
+                  />
                   <Button
                     type="primary"
                     clickFun={() => removeCart(_cartItem)}

@@ -15,6 +15,7 @@ import {
 } from "../../actions/Cart";
 import { GET_WISHLIST, REMOVE_FROM_WISHLIST } from "../../actions/Wishlist";
 import { addToCart, useCart } from "../../Context/Cart";
+import { SHOW_MESSAGE, useSnackBar } from "../../Context/SnackMessage";
 import { useWishList } from "../../Context/Wishlist";
 import { getDiscountedTotalPrice } from "../../reducers/Cart";
 import Button from "../../Utility/components/Button";
@@ -25,6 +26,8 @@ import "./index.css";
 function Index() {
   const { wishlist, itemCount, dispatch } = useWishList();
   const cartDispatch = useCart().cart.dispatch;
+  const snackbar = useSnackBar();
+
   useEffect(() => {
     dispatch({ type: GET_WISHLIST });
   }, []);
@@ -32,7 +35,13 @@ function Index() {
   const handleMoveToCart = (product) => {
     cartDispatch({ type: ADD_TO_CART, data: { product } });
     dispatch({ type: REMOVE_FROM_WISHLIST, data: { product } });
+
+    snackbar.dispatch({
+      type: SHOW_MESSAGE,
+      data: { message: "Item Moved To Cart" },
+    });
   };
+
   const handleRemoveWishlist = (product) =>
     dispatch({ type: REMOVE_FROM_WISHLIST, data: { product } });
 

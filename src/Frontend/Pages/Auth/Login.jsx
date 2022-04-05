@@ -13,6 +13,7 @@ function Login() {
     email: registration.email ? registration.email : null,
     password: null,
   });
+
   const loginUser = async () => {
     dispatch({ type: LOGIN });
     const _login = await login(userDetails);
