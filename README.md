@@ -25,6 +25,7 @@ A Flipkart Like Ecommerce consists of Auth,Cart & WIshlist Management
 - Sort
 - Footer
 - Sign Out
+- Search
 
 ## Routes
 
