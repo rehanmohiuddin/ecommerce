@@ -10,8 +10,8 @@ import "./index.css";
 function Login() {
   const { dispatch, registration } = useAuth();
   const [userDetails, setuserDetails] = useState({
-    email: registration.email ? registration.email : null,
-    password: null,
+    email: registration.email ? registration.email : "rehan.4942@gmail.com",
+    password: "123456",
   });
 
   const loginUser = async () => {
@@ -31,6 +31,7 @@ function Login() {
       <div className="auth-right">
         <label class="has-float-label">
           <input
+            value={userDetails.email}
             onChange={(e) =>
               setuserDetails((_ud) => ({ ..._ud, email: e.target.value }))
             }
@@ -46,6 +47,7 @@ function Login() {
             onChange={(e) =>
               setuserDetails((_ud) => ({ ..._ud, password: e.target.value }))
             }
+            value={userDetails.password}
             placeholder=" "
             type="password"
             required="required"

@@ -7,6 +7,7 @@ import {
   productState,
   APPLY_FILTER,
   GET_SEARCH_QUERY_SUCCESS,
+  SORT_PRICE_LOW_TO_HIGH,
 } from "../actions/Products";
 
 const priceFilterFunction = (filter, products) => {
@@ -32,10 +33,27 @@ const reduceDiscountPrice = (products, product) => [
   ...products,
   { ...product, discountedPrice: getDiscountedPrice(product) },
 ];
+
+const sortPriceFunction = (sort, products) =>
+  sort === SORT_PRICE_LOW_TO_HIGH
+    ? [
+        ...products.sort(
+          (firstproduct, secondProduct) =>
+            firstproduct.price - secondProduct.price
+        ),
+      ]
+    : [
+        ...products.sort(
+          (firstproduct, secondProduct) =>
+            secondProduct.price - firstproduct.price
+        ),
+      ];
+
 const filterMapperFunction = {
   category: categoryFilterFunction,
   price: priceFilterFunction,
   rating: ratingFilterFunction,
+  sortPrice: sortPriceFunction,
 };
 
 const productsReducer = (state = productState, action) => {
@@ -56,19 +74,11 @@ const productsReducer = (state = productState, action) => {
         ...state,
         featuredProducts: action.data.featuredProducts,
       };
-    case FILTER_BY_CATEGORY:
-      const _selectedCategory = action.data.category;
-      const _products = state.products.filter(
-        (_product) => _product.category === _selectedCategory
-      );
-      return {
-        ...state,
-        products: _products,
-        selectedCategory: _selectedCategory,
-      };
+
     case APPLY_FILTER:
       const activeFilters = action.data;
-      let _Products = state.products;
+      let _Products = [...state.products];
+
       for (const [key, value] of Object.entries(activeFilters)) {
         _Products = value
           ? filterMapperFunction[key](value, _Products)
@@ -78,30 +88,6 @@ const productsReducer = (state = productState, action) => {
       return {
         ...state,
         filteredProducts: _Products,
-      };
-
-    case FILTER_BY_PRICE:
-      const _selectedMinPriceCategory = action.data.category.min;
-      const _selectedMaxPriceCategory = action.data.category.max
-        ? action.data.category.max
-        : 100000;
-      const _priceProducts = state.products.filter(
-        (_product) =>
-          _product.price >= _selectedMinPriceCategory &&
-          _product.price <= _selectedMaxPriceCategory
-      );
-      return {
-        ...state,
-        products: _priceProducts,
-      };
-    case FILTER_BY_RATING:
-      const _selectedRatingCategory = action.data.category;
-      const _ratingProducts = state.products.filter(
-        (_product) => _product.rating >= _selectedRatingCategory
-      );
-      return {
-        ...state,
-        products: _ratingProducts,
       };
 
     case GET_SEARCH_QUERY_SUCCESS:

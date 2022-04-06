@@ -2,7 +2,12 @@ import { faCircle, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { APPLY_FILTER, GET_ALL_PRODUCTS } from "../../actions/Products";
+import {
+  APPLY_FILTER,
+  GET_ALL_PRODUCTS,
+  SORT_PRICE_HIGH_TO_LOW,
+  SORT_PRICE_LOW_TO_HIGH,
+} from "../../actions/Products";
 import { getAllProducts, useProducts } from "../../Context/products";
 import {
   activeFilterState,
@@ -19,6 +24,11 @@ function Filters() {
   const [selectedPriceFilter, setSelectedPriceFilter] =
     useState(selectedFilterState);
   const [activeFilters, setActiveFilters] = useState(activeFilterState);
+  const [sortPricesList, setSortPricesList] = useState([
+    { name: "High To Low", selected: null, sort: SORT_PRICE_HIGH_TO_LOW },
+    { name: "Low To High", selected: null, sort: SORT_PRICE_LOW_TO_HIGH },
+  ]);
+
   useEffect(() => {
     Object.keys(activeFilter).length > 0 &&
       dispatch({
@@ -76,6 +86,13 @@ function Filters() {
         );
         return _ratingFilter;
       }),
+    sortPrice: async () => {
+      setSortPricesList((_priceList) => {
+        _priceList.forEach((_price) => (_price.selected = false));
+        return _priceList;
+      });
+      dispatch({ type: GET_ALL_PRODUCTS, data: await getAllProducts() });
+    },
   };
 
   const removeFilter = (filter_name) => {
@@ -134,6 +151,25 @@ function Filters() {
     ]);
     dispatch({ type: GET_ALL_PRODUCTS, data: await getAllProducts() });
   };
+
+  const handleSortByPriceFilter = (e, sortType, index) => {
+    setActiveFilter({
+      ...activeFilter,
+      sortPrice: sortType,
+    });
+    setSortPricesList((_pricesList) => {
+      _pricesList.forEach(
+        (_price, _index) =>
+          (_price.selected = index === _index ? e.target.checked : null)
+      );
+      return _pricesList;
+    });
+    setActiveFilters({
+      ...activeFilters,
+      sortPrice: sortType,
+    });
+  };
+
   return (
     <div className="product-filters">
       <div className="filters-header">
@@ -222,6 +258,23 @@ function Filters() {
             </select>
           </div>
         </div>
+      </div>
+      <div className="filter-container">
+        <div className="filter-section-heading">Sort By Price</div>
+        <ul className="filters-list">
+          {sortPricesList.map((_sortPrice, index) => (
+            <li>
+              <input
+                onChange={(e) =>
+                  handleSortByPriceFilter(e, _sortPrice.sort, index)
+                }
+                type={"radio"}
+                checked={_sortPrice.selected}
+              />
+              <span>{_sortPrice.name}</span>
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="filter-container">
         <div className="filter-section-heading">RATING</div>
