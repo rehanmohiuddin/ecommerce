@@ -42,6 +42,8 @@
   padding: 1rem;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing-unit) * 1);
 }
 .footer-item {
   display: flex;

@@ -15,15 +15,16 @@ const Home = () => {
   const { authState } = useAuth();
   isAuth();
   return (
-    <div>
+    <>
       <Header />
       <Auth />
       <Profile />
       <Category />
+
       <Carousel />
       <Featured />
       <Footer />
-    </div>
+    </>
   );
 };
 

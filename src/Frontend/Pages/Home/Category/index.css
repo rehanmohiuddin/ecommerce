@@ -5,6 +5,7 @@
   justify-content: center;
   gap: 2rem;
   box-shadow: 0 1px 1px 0 rgb(0 0 0 / 16%);
+  flex-wrap: wrap;
 }
 .category {
   display: flex;

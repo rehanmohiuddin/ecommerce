@@ -24,6 +24,7 @@
 .featured-products-container {
   display: flex;
   overflow-x: scroll;
+  align-items: center;
 }
 
 .product-border {
@@ -35,6 +36,7 @@
 .product-featured {
   cursor: pointer;
   height: 100%;
+  min-width: calc(var(--spacing-unit) * 15);
 }
 .product-featured-footer {
   display: flex;
@@ -48,6 +50,10 @@
   word-break: break-all;
 } */
 .product-image {
-  /* width: 12vw; */
   padding: 1rem;
+  width: 100%;
+}
+
+.products-checkout-heading {
+  font-size: calc(var(--font-unit) * 4);
 }

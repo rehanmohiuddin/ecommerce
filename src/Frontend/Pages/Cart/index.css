@@ -3,6 +3,7 @@
   padding: 1rem;
   background-color: var(--app-light-white);
   gap: 0.7rem;
+  min-height: 41vh;
 }
 
 .cart-item-container {
@@ -14,8 +15,10 @@
 
 .cart-items {
   background-color: var(--white);
-  flex: 1;
+  flex: 1 1;
   padding-right: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 .cart-billing {
   background-color: var(--white);
@@ -37,6 +40,7 @@
 }
 .cart-item > img {
   padding: 1rem;
+  height: auto;
 }
 .cart-item-body {
   display: flex;
@@ -202,4 +206,10 @@ button {
 }
 .cart-empty > a {
   color: var(--primary);
+}
+
+@media all and (max-width: 500px) {
+  .cart-item {
+    flex-direction: column;
+  }
 }

@@ -16,7 +16,7 @@ import {
   selectedFilterState,
 } from "./Util/constants";
 
-function Filters() {
+function Filters({ closeFilter }) {
   const { dispatch } = useProducts();
   const [activeFilter, setActiveFilter] = useState({});
   const [categoryFilterList, setCategoryFilter] = useState(categoryState);

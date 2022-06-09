@@ -42,6 +42,7 @@
   bottom: -0.5rem !important;
   opacity: 1 !important;
   border-radius: 0.2rem !important;
+  font-size: calc(var(--font-unit) * 3);
 }
 .carousel-item-container {
   display: flex;

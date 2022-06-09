@@ -10,6 +10,7 @@
 .auth-right {
   width: 60%;
   flex: 1;
+  box-sizing: border-box;
 }
 
 .auth-left {
@@ -191,4 +192,11 @@ a {
 
 a:visited .helper {
   color: var(--app-pale-white);
+}
+
+@media all and (max-width: 500px) {
+  .auth-left,
+  .auth-right {
+    width: 100%;
+  }
 }
