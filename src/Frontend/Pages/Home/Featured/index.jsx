@@ -19,7 +19,9 @@ const Featured = () => {
   return (
     <div className=" featured-container">
       <div className="featured-header kash-flex kash-flex-end">
-        <h2 className="kash-h5">Products To Check Out</h2>
+        <h2 className="kash-h5 products-checkout-heading">
+          Products To Check Out
+        </h2>
         <Button navigate="/products" type="secondary" data="View All" />
       </div>
       <h3>Suggested for You</h3>

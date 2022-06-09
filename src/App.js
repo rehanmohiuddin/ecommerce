@@ -12,7 +12,7 @@ import RouteNotFound from "./Frontend/Pages/PageNotFound";
 function App() {
   const { message } = useSnackBar();
   return (
-    <div className="App">
+    <>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -35,7 +35,7 @@ function App() {
         <Route path="*" element={<RouteNotFound />} />
       </Routes>
       {message && <Snackbar />}
-    </div>
+    </>
   );
 }
 
