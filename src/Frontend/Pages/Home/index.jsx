@@ -18,7 +18,7 @@ const Home = () => {
     <>
       <Header />
       <Auth />
-      <Profile />
+      {/* <Profile /> */}
       <Category />
 
       <Carousel />

@@ -106,6 +106,9 @@ a {
   color: var(--white);
   cursor: pointer;
 }
+.bars {
+  display: none;
+}
 .mobNav {
   display: none;
   flex-direction: column;
@@ -133,6 +136,7 @@ a {
     width: 100%;
   }
   .bars {
+    display: block;
     font-size: calc(var(--spacing-unit) * 1.4);
     color: var(--white);
   }

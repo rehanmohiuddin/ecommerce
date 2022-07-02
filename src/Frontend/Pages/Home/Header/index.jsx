@@ -18,6 +18,7 @@ import { useWishList } from "../../../Context/Wishlist";
 import Button from "../../../Utility/components/Button";
 import Search from "../Search";
 import "./index.css";
+import Profile from "../../Profile";
 
 const Header = () => {
   const { isLoggedIn, user, dispatch, isAuthenticated } = useAuth();
@@ -26,6 +27,7 @@ const Header = () => {
   const wishlistCount = useWishList().itemCount;
   const signOutHandler = () => dispatch({ type: LOGOUT });
   const [showMobNav, setMobNav] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
 
   const profileHandler = () => {
     dispatch({
@@ -39,7 +41,6 @@ const Header = () => {
 
   const renderHeaderComponents = () => (
     <>
-      {" "}
       <Search />
       {isLoggedIn ? (
         <FontAwesomeIcon
@@ -104,7 +105,7 @@ const Header = () => {
         <Link className="header-logo-container" to={"/"}>
           <img className="header-main-logo" src={headerImg} />
         </Link>
-
+        <Profile />
         <FontAwesomeIcon
           className="bars"
           icon={faBars}

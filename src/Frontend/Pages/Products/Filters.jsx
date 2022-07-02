@@ -170,6 +170,8 @@ function Filters({ closeFilter }) {
     });
   };
 
+  console.log({ activeFilters });
+
   return (
     <div className="product-filters">
       <div className="filters-header">
@@ -213,7 +215,12 @@ function Filters({ closeFilter }) {
                     );
                     return _catFilters;
                   });
-                  setActiveFilters({ ...activeFilters, category: _cat.name });
+                  setActiveFilters(() => {
+                    const cloneCat = e.target.checked
+                      ? { ...activeFilters, category: _cat.name }
+                      : { ...activeFilters, category: null };
+                    return cloneCat;
+                  });
                 }}
                 checked={_cat.selected}
                 type={"checkbox"}
@@ -297,7 +304,9 @@ function Filters({ closeFilter }) {
                   });
                   setActiveFilters({
                     ...activeFilters,
-                    rating: `${_rating.name}★ & above`,
+                    rating: e.target.checked
+                      ? `${_rating.name}★ & above`
+                      : null,
                   });
                 }}
                 type={"checkbox"}
